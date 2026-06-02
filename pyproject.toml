@@ -1,0 +1,14 @@
+[project]
+name = "halden-shipments-api"
+version = "0.4.0"
+description = "Shipments, customers and tracking API for Halden Freight Analytics"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+    "pydantic[email]>=2.6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "httpx>=0.27"]
+backfill = ["boto3>=1.34"]

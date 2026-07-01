@@ -26,3 +26,10 @@ def shipment_events(shipment_id: str, client: str = Depends(require_client)):
 def post_event(event: TrackingEvent, client: str = Depends(require_client)):
     _record(event)
     return {"accepted": True}
+
+
+@router.post("/carrier-webhook", status_code=202)
+async def carrier_webhook(event: TrackingEvent):
+    # Carriers can't send our API key header; TODO verify their HMAC signature.
+    _record(event)
+    return {"accepted": True}
